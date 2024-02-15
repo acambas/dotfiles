@@ -17,16 +17,31 @@ return {
 			require("telescope").load_extension("frecency")
 			require("telescope").setup({
 				defaults = {
+					layout_strategy = "vertical",
 					mappings = {
 						i = {
 							["<C-h>"] = "which_key",
 						},
 					},
 				},
+				pickers = {
+					buffers = {
+						sort_lastused = true,
+						initial_mode = "normal",
+						mappings = {
+							i = {
+								["<c-q>"] = "delete_buffer",
+							},
+							n = {
+								["<c-d>"] = "delete_buffer",
+							},
+						},
+					},
+				},
 			})
 			vim.keymap.set(
 				"n",
-				"<leader>sb",
+				"<leader><space>",
 				require("telescope.builtin").buffers,
 				{ desc = "[ ] Find existing buffers" }
 			)
@@ -41,7 +56,20 @@ return {
 			vim.keymap.set("n", "<leader>p", require("telescope.builtin").git_files, { desc = "Search [G]it [F]iles" })
 			vim.keymap.set("n", "<leader>sf", require("telescope.builtin").find_files, { desc = "[S]earch [F]iles" })
 			vim.keymap.set("n", "<leader>sh", require("telescope.builtin").help_tags, { desc = "[S]earch [H]elp" })
-			vim.keymap.set("n", "<leader>sg", require("telescope.builtin").live_grep, { desc = "[S]earch by [G]rep" })
+			vim.keymap.set("n", "<leader>sg", function()
+				require("telescope.builtin").live_grep({
+					vimgrep_arguments = {
+						"rg",
+						"--color=never",
+						"--no-heading",
+						"--with-filename",
+						"--line-number",
+						"--column",
+						"--smart-case",
+						"-F",
+					},
+				})
+			end, { desc = "[S]earch by [G]rep" })
 			vim.keymap.set("n", "<leader>sk", require("telescope.builtin").keymaps, { desc = "[S]earch [K]eymaps" })
 			vim.keymap.set("n", "<leader>sr", "<Cmd>Telescope frecency<CR>")
 		end,
