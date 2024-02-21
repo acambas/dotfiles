@@ -75,4 +75,4 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 	end,
 })
 
-vim.cmd("colorscheme rose-pine-main")
+vim.cmd("colorscheme rose-pine-moon")

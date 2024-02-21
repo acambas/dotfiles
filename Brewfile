@@ -2,7 +2,7 @@ tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "FelixKratz/formulae"
 
-cask "kitty"
+cask "wezterm"
 cask "keepingyouawake"
 cask "font-fira-code"
 cask "alt-tab"
