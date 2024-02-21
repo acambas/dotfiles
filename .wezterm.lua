@@ -19,10 +19,10 @@ config.keys = {
 config.font = wezterm.font("JetBrainsMono Nerd Font Mono")
 
 config.window_padding = {
-	left = 0,
-	right = 0,
-	top = 0,
-	bottom = 0,
+	left = 15,
+	right = 15,
+	top = 5,
+	bottom = 5,
 }
 
 config.send_composed_key_when_left_alt_is_pressed = false
