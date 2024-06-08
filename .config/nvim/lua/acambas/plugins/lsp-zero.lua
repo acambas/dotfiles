@@ -2,7 +2,7 @@ return {
 	{
 		"VonHeikemen/lsp-zero.nvim",
 		branch = "v3.x",
-
+		enabled = true,
 		cond = function()
 			if vim.g.vscode then
 				return false
@@ -34,7 +34,7 @@ return {
 			"rafamadriz/friendly-snippets",
 			"aznhe21/actions-preview.nvim",
 			-- "jmbuhr/otter.nvim",
-			-- "pmizio/typescript-tools.nvim",
+			"pmizio/typescript-tools.nvim",
 			"nvim-lua/plenary.nvim",
 		},
 		config = function()
@@ -99,17 +99,17 @@ return {
 				ensure_installed = {
 					"lua_ls",
 					"rust_analyzer",
-					"vtsls",
+					-- "vtsls",
 					-- "tsserver",
 					"eslint",
 					"html",
 					"cssls",
 					"jsonls",
-					"tailwindcss",
+					-- "tailwindcss",
 					-- "prettier",
 					-- "prettierd",
 				},
-				automatic_installation = true,
+				-- automatic_installation = true,
 
 				handlers = {
 					lsp_zero.default_setup,
@@ -122,7 +122,12 @@ return {
 					--
 				},
 			})
-
+			require("typescript-tools").setup({
+				-- spawn additional tsserver instance to calculate diagnostics on it
+				separate_diagnostic_server = true,
+				-- "change"|"insert_leave" determine when the client asks the server about diagnostic
+				publish_diagnostic_on = "insert_leave",
+			})
 			local cmp = require("cmp")
 
 			local luasnip = require("luasnip")

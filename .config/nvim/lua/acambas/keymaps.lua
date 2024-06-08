@@ -28,6 +28,13 @@ vim.keymap.set("n", "n", "nzz", { remap = false })
 vim.keymap.set("n", "N", "Nzz", { remap = false })
 vim.keymap.set("n", "*", "*zz", { remap = false })
 
+-- windon controlls
+vim.keymap.set("n", "<C-h>", "<C-w>h", { silent = true })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { silent = true })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { silent = true })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { silent = true })
+vim.keymap.set("n", "<C-q>", "<C-w>q", { silent = true })
+
 -- clear search
 vim.api.nvim_set_keymap("n", "<esc>", ":nohlsearch<CR>", { noremap = true, silent = true })
 

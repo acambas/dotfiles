@@ -8,7 +8,7 @@ for (const zxc of [1, 2, 3]) {
 class Foo {
 	sdf: string;
 	bar: number = 0;
-	constructor() {
+	conttructor() {
 		this.sdf = "zxc";
 	}
 }

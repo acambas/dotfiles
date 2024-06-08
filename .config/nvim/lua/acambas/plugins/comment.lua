@@ -1,9 +1,6 @@
 return {
-	"echasnovski/mini.comment",
-	version = false,
+	"folke/ts-comments.nvim",
+	opts = {},
 	event = "VeryLazy",
-	opts = {
-		-- add any options here
-	},
-	-- lazy = false,
+	enabled = vim.fn.has("nvim-0.10.0") == 1,
 }

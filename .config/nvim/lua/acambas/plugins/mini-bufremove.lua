@@ -13,7 +13,7 @@ return {
 
 		vim.keymap.set(
 			"n",
-			"<C-q>",
+			"<C-x>",
 			"<cmd>lua MiniBufremove.wipeout(0, true)<CR>",
 			{ desc = "[q]uit buffer", silent = true, noremap = true }
 		)

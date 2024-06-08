@@ -29,6 +29,7 @@ return {
 				["gx"] = "actions.open_external",
 				["g."] = "actions.toggle_hidden",
 			},
+			use_default_keymaps = false,
 			columns = {
 				"icon",
 				-- "permissions",

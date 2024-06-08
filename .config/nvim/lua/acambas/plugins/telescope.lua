@@ -11,10 +11,9 @@ return {
 				return true
 			end
 		end,
-		dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-frecency.nvim" },
+		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
 			pcall(require("telescope").load_extension, "fzf")
-			require("telescope").load_extension("frecency")
 			require("telescope").setup({
 				defaults = {
 					layout_strategy = "vertical",
@@ -30,10 +29,10 @@ return {
 						initial_mode = "normal",
 						mappings = {
 							i = {
-								["<c-q>"] = "delete_buffer",
+								["<c-x>"] = "delete_buffer",
 							},
 							n = {
-								["<c-d>"] = "delete_buffer",
+								["<c-x>"] = "delete_buffer",
 							},
 						},
 					},
@@ -71,7 +70,6 @@ return {
 				})
 			end, { desc = "[S]earch by [G]rep" })
 			vim.keymap.set("n", "<leader>sk", require("telescope.builtin").keymaps, { desc = "[S]earch [K]eymaps" })
-			vim.keymap.set("n", "<leader>sr", "<Cmd>Telescope frecency<CR>")
 		end,
 	},
 }
