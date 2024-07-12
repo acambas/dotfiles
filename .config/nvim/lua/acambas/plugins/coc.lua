@@ -142,7 +142,6 @@ return {
       'coc-yaml',
       'coc-twoslash-queries',
       'coc-snippets',
-      'coc-git',
       '@yaegassy/coc-marksman'
     }
 
