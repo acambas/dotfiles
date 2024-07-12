@@ -1,35 +1,54 @@
 console.info("Hello via Bun!");
 if (1 <= 2) {
-	console.log("1 <= 2");
+  console.info("1 <= 2");
 }
 for (const zxc of [1, 2, 3]) {
-	console.log(zxc);
+  console.info(zxc);
 }
+
 class Foo {
-	sdf: string;
-	bar: number = 0;
-	conttructor() {
-		this.sdf = "zxc";
-	}
+  sdf: string;
+  bar: number = 0;
+  constructor() {
+    this.sdf = "zxc";
+  }
 }
-console.log("asd");
-console.log("idemooo");
+
+html`<div>
+  <script>
+    const a = 1;
+  </script>
+  <style>
+    body {
+      background-color: red;
+    }
+  </style>
+  <h1>foo</h1>
+  <div>bar</div>
+  <div>baz</div>
+  <div>foo</div>
+</div>`;
+
+console.info("asd");
+console.info("idemooo");
 import qwe from "./qwe.ts";
 console.info(qwe);
-console.log("ideoooo");
+console.info("ideoooo");
 
 const a = new Foo();
 
 a.sdf = "qwe";
 a.sdf = "zxc";
-const b = new foo();
-b.bar = 123;
-b.sdf = "sfdg";
-b.bar = 123;
+
+a.bjjg = "zxc";
 
 function sasa() {
-	console.log(b);
-	console.log("idemoosdfsdf");
+  console.info(b);
+  console.info("idemoosdfsdf");
+  return 2;
 }
+const i = sasa();
+const j = new foo();
 
 sasa();
+console.info();

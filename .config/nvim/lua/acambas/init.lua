@@ -3,7 +3,7 @@ require("acambas.lazy")
 
 -- fold settings
 vim.o.foldcolumn = "1" -- '0' is not bad
-vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 -- misc settings
@@ -17,6 +17,7 @@ vim.o.hlsearch = true
 vim.opt.incsearch = true
 
 -- Make line numbers default
+vim.opt.number = true
 vim.wo.relativenumber = true
 
 -- Sync clipboard between OS and Neovim.
@@ -58,21 +59,52 @@ vim.opt.expandtab = true
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-	group = highlight_group,
-	pattern = "*",
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = "*",
 })
 
--- this makes the cursor stay in place
+-- this command places the cursor in the last position when opening a file
 vim.api.nvim_create_autocmd("BufReadPost", {
-	callback = function()
-		local mark = vim.api.nvim_buf_get_mark(0, '"')
-		if mark[1] > 1 and mark[1] <= vim.api.nvim_buf_line_count(0) then
-			vim.api.nvim_win_set_cursor(0, mark)
-		end
-	end,
+  callback = function()
+    local mark = vim.api.nvim_buf_get_mark(0, '"')
+    if mark[1] > 1 and mark[1] <= vim.api.nvim_buf_line_count(0) then
+      vim.api.nvim_win_set_cursor(0, mark)
+    end
+  end,
 })
 
+vim.o.termguicolors = true
 vim.cmd("colorscheme rose-pine-moon")
+
+vim.api.nvim_create_user_command('Finder',
+  function()
+    local path = vim.api.nvim_buf_get_name(0)
+    os.execute('open -R ' .. path)
+  end,
+  {}
+)
+
+vim.api.nvim_create_user_command('PathCopyRel',
+  function()
+    local path = require('plenary').path:new(vim.api.nvim_buf_get_name(0)):make_relative()
+    -- log the path
+    if vim.bo.filetype == 'oil' then
+      local oil = require("oil")
+      path = require('plenary').path:new(oil.get_current_dir()):make_relative()
+    end
+    vim.fn.setreg('+', path)
+  end, {}) -- copy relative path
+
+
+-- vim.api.nvim_create_user_command('PathCopyAbs', function()
+--   local path = vim.api.nvim_buf_get_name(0)
+--   -- log the path
+--   if vim.bo.filetype == 'oil' then
+--     local oil = require("oil")
+--     path = oil.get_current_dir()
+--   end
+--   vim.fn.setreg('+', path)
+-- end, {}) -- absolute path
