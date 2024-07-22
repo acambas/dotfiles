@@ -8,7 +8,7 @@ local config = wezterm.config_builder()
 
 -- For example, changing the color scheme:
 config.color_scheme = "rose-pine-moon"
-config.enable_tab_bar = false
+config.hide_tab_bar_if_only_one_tab = true
 config.audible_bell = "Disabled"
 config.keys = {
 	-- Make Option-Left equivalent to Alt-b which many line editors interpret as backward-word

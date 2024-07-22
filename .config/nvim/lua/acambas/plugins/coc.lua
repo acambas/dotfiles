@@ -2,7 +2,7 @@ return {
   "neoclide/coc.nvim",
   branch = "master",
   build = "npm install",
-  enabled = true,
+  enabled = false,
   event = "VeryLazy",
 
   -- cond = function()
