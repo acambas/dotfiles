@@ -2,7 +2,7 @@ return {
   "neoclide/coc.nvim",
   branch = "master",
   build = "npm install",
-  enabled = false,
+  enabled = true,
   event = "VeryLazy",
 
   -- cond = function()
@@ -124,25 +124,25 @@ return {
 
     keyset("n", "<leader>cc", "<CMD>Telescope coc commands<cr>", { silent = true })
     vim.g.coc_global_extensions = {
-      'coc-json',
-      'coc-tsserver',
-      'coc-marketplace',
-      'coc-zig',
-      'coc-html',
-      'coc-lit-html',
-      'coc-css',
-      'coc-eslint',
-      'coc-ultisnips',
-      'coc-pairs',
-      'coc-pretty-ts-errors',
-      'coc-lua',
-      'coc-markdownlint',
-      'coc-biome',
-      'coc-prettier',
-      'coc-yaml',
-      'coc-twoslash-queries',
-      'coc-snippets',
-      '@yaegassy/coc-marksman'
+      "coc-json",
+      "coc-tsserver",
+      "coc-marketplace",
+      "coc-zig",
+      "coc-html",
+      "coc-lit-html",
+      "coc-css",
+      "coc-eslint",
+      "coc-ultisnips",
+      "coc-pairs",
+      "coc-pretty-ts-errors",
+      "coc-lua",
+      "coc-markdownlint",
+      "coc-biome",
+      "coc-prettier",
+      "coc-yaml",
+      "coc-twoslash-queries",
+      "coc-snippets",
+      "@yaegassy/coc-marksman",
     }
 
     vim.g.coc_user_config = {
@@ -176,5 +176,84 @@ return {
         },
       },
     }
+
+    ----------------------garbage collextion -----------------------------------------------------
+    local function notify(kind)
+      if kind == "lsp_has_started" then
+        vim.notify("Focus recovered. Starting LSP clients.",
+          vim.log.levels.INFO,
+          { title = "garbage-day.nvim" }
+        )
+      elseif kind == "lsp_has_stopped" then
+        vim.notify("Inactive LSP clients have been stopped to save resources.",
+          vim.log.levels.INFO,
+          { title = "garbage-day.nvim" }
+        )
+      end
+    end
+
+    local timer = vim.uv.new_timer() -- Can store ~29377 years
+    local start_time = os.time()
+    local current_time = 0
+    local elapsed_time = 0
+
+    local grace_period_exceeded = false
+    local lsp_has_been_stopped = false
+    local wakeup_delay_counting = false
+    local wakeup_delay = 1000
+    local grace_period = 3 * 60
+
+
+    -- Focus lost?
+    vim.api.nvim_create_autocmd("FocusLost", {
+      callback = function()
+        wakeup_delay_counting = false -- reset wakeup_delay state
+
+        -- Start counting
+        timer:start(1000, 1000, vim.schedule_wrap(function()
+          -- Update timer state
+          current_time = os.time()
+          elapsed_time = current_time - start_time
+          grace_period_exceeded = elapsed_time >= grace_period
+          -- Grace period exceeded? Stop LSP
+          if grace_period_exceeded and not lsp_has_been_stopped then
+            timer:stop()
+            vim.cmd("CocDisable")
+            vim.cmd("call coc#rpc#stop()")
+            notify("lsp_has_stopped")
+            lsp_has_been_stopped = true
+          end
+        end))
+      end
+    })
+
+
+    -- Focus gained?
+    vim.api.nvim_create_autocmd("FocusGained", {
+      callback = function()
+        -- local config = vim.g.garbage_day_config
+        wakeup_delay_counting = true
+
+        vim.defer_fn(function()
+          -- if the mouse leave nvim before wakeup_delay ends, don't awake.
+          if wakeup_delay_counting then
+            -- Start LSP
+            if lsp_has_been_stopped then
+              vim.cmd("CocEnable")
+              vim.cmd("CocRestart")
+              notify("lsp_has_started")
+            end
+
+
+            -- Reset state
+            start_time = os.time()
+            current_time = 0
+            elapsed_time = 0
+            grace_period_exceeded = false
+            lsp_has_been_stopped = false
+          end
+        end, wakeup_delay)
+      end
+    })
   end,
 }

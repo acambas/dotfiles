@@ -21,6 +21,8 @@ source $ZSH/oh-my-zsh.sh
 
 
 # ---------------------------- aliases ----------------------------
+export PATH=$PATH:/Users/aleksandarcambas/.local/bin
+
 # General
 alias reload="source ~/.zshrc"
 alias c="clear"
@@ -54,6 +56,9 @@ alias td="tmux detach -t"
 alias ts="tmux switch-client -t"
 alias tss="~/tmux-sessionizer.sh"
 
+# zig
+# alias zig="~/dev/zig/zig"
+
 # --------------------------------------------------------
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -76,3 +81,6 @@ autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/terraform terraform
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# ---- Zoxide (better cd) ----
+eval "$(zoxide init zsh)"
