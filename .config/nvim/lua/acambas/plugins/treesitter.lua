@@ -47,6 +47,8 @@ return {
 				require("treesitter-context").go_to_context(vim.v.count1)
 			end, { silent = true })
 			require("nvim-treesitter.configs").setup({
+				ignore_install = {},
+				modules = {},
 				ensure_installed = {
 					"c",
 					"go",
@@ -63,7 +65,6 @@ return {
 					"zig",
 					"hcl",
 					"terraform",
-					"zig",
 				},
 				sync_install = false,
 				auto_install = true,

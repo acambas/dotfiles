@@ -1,6 +1,6 @@
 return {
 	{
-		enabled = false,
+		enabled = true,
 		"VonHeikemen/lsp-zero.nvim",
 		branch = "v3.x",
 		event = "VeryLazy",
@@ -99,7 +99,17 @@ return {
 					end
 					vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
 				end
-
+				lsp_zero.extend_lspconfig({
+					sign_text = true,
+				})
+				lsp_zero.extend_lspconfig({
+					sign_text = {
+						error = "✘",
+						warn = "▲",
+						hint = "⚑",
+						info = "»",
+					},
+				})
 				nmap("gd", require("telescope.builtin").lsp_definitions, "go to definition")
 				nmap("gD", vim.lsp.buf.declaration, "go to Declaration")
 				nmap("gi", vim.lsp.buf.implementation, "go to implementation")
@@ -114,9 +124,10 @@ return {
 				vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>")
 				vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>")
 			end)
-
+			vim.opt.signcolumn = "yes"
 			vim.diagnostic.config({
 				virtual_text = false,
+				signs = true,
 			})
 
 			-------------------------------------MASON------------------------------------------------

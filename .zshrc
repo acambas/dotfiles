@@ -22,6 +22,7 @@ source $ZSH/oh-my-zsh.sh
 
 # ---------------------------- aliases ----------------------------
 export PATH=$PATH:/Users/aleksandarcambas/.local/bin
+export PATH=$PATH:~/.volta/bin/
 
 # General
 alias reload="source ~/.zshrc"
@@ -45,6 +46,10 @@ alias v.="vim ."
 # cd
 alias ..="cd .."
 alias ...="cd ../.."
+alias ....="cd ../../.."
+
+# zoxide
+alias cd="z"
 
 
 # Tmux
@@ -59,10 +64,6 @@ alias tss="~/tmux-sessionizer.sh"
 # zig
 # alias zig="~/dev/zig/zig"
 
-# --------------------------------------------------------
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
     tmux attach -t home || tmux new -s home -c $HOME
