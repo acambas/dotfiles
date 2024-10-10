@@ -77,7 +77,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 })
 
 vim.o.termguicolors = true
-vim.cmd("colorscheme cyberdream")
+vim.cmd("colorscheme rose-pine-moon")
 
 vim.api.nvim_create_user_command("Finder", function()
 	local path = vim.api.nvim_buf_get_name(0)

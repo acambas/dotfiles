@@ -71,6 +71,7 @@ return {
 							"treesitter",
 							-- 'regex',
 						},
+						modes_allowlist = { "n" },
 						-- case_insensitive_regex: sets regex case sensitivity
 						case_insensitive_regex = false,
 					})
@@ -118,7 +119,7 @@ return {
 				nmap("<leader>cd", require("telescope.builtin").diagnostics, "go to diagnostics")
 				nmap("gr", require("telescope.builtin").lsp_references, "go to references")
 
-				nmap("<leader>cr", vim.lsp.buf.rename, "go to references")
+				nmap("<leader>cr", vim.lsp.buf.rename, "rename")
 				vim.keymap.set({ "v", "n" }, "<leader>ca", require("actions-preview").code_actions)
 				vim.keymap.set("n", "ge", "<cmd>lua vim.diagnostic.open_float()<cr>")
 				vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>")
