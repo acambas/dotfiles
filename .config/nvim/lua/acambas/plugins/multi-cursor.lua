@@ -34,6 +34,7 @@ return {
 	{
 		"jake-stewart/multicursor.nvim",
 		branch = "1.0",
+		event = "VeryLazy",
 		config = function()
 			local mc = require("multicursor-nvim")
 
@@ -42,10 +43,10 @@ return {
 			local set = vim.keymap.set
 
 			-- Add or skip cursor above/below the main cursor.
-			set({ "n", "v" }, "<m-up>", function()
+			set({ "n", "v" }, "<m-k>", function()
 				mc.lineAddCursor(-1)
 			end)
-			set({ "n", "v" }, "<m-down>", function()
+			set({ "n", "v" }, "<m-j>", function()
 				mc.lineAddCursor(1)
 			end)
 			-- set({ "n", "v" }, "<leader><up>", function()

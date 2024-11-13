@@ -31,7 +31,12 @@ vim.keymap.set("v", "`", [[:s/\%V\(.*\)\%V/`\1`/ <CR>]], { desc = "Surround sele
 vim.keymap.set("v", "{", [[:s/\%V\(.*\)\%V/{\1}/ <CR>]], { desc = "Surround selection with {" }) -- Surround the visual selection with {}
 vim.keymap.set("v", "[", [[:s/\%V\(.*\)\%V/[\1]/ <CR>]], { desc = "Surround selection with [" }) -- Surround the visual selection with []
 vim.keymap.set("v", "n", 'y/<C-r>"<CR>N') -- Search the visual selection
-vim.keymap.set("n", "<tab>", "<C-S-^>")
+
+-- Resize window using Alt and arrow keys
+vim.keymap.set("n", "<S-Left>", "<c-w>5<")
+vim.keymap.set("n", "<S-Right>", "<c-w>5>")
+vim.keymap.set("n", "<S-Up>", "<c-w>+")
+vim.keymap.set("n", "<S-Down>", "<c-w>-")
 
 -- keymap that deletes the current line and puts the cursor in the right place
 vim.keymap.set("n", "dd", function()
@@ -40,46 +45,3 @@ vim.keymap.set("n", "dd", function()
 	end
 	return "dd"
 end, { expr = true })
-
--- get contents of visual selection
--- handle unpack deprecation
----@diagnostic disable-next-line: deprecated
-table.unpack = table.unpack or unpack
-local function get_visual()
-	local _, ls, cs = table.unpack(vim.fn.getpos("v"))
-	local _, le, ce = table.unpack(vim.fn.getpos("."))
-	return vim.api.nvim_buf_get_text(0, ls - 1, cs - 1, le - 1, ce, {})
-end
-
-vim.keymap.set("v", "<C-r>", function()
-	local pattern = table.concat(get_visual())
-	-- escape regex and line endings
-	pattern = vim.fn.substitute(vim.fn.escape(pattern, "^$.*\\/~[]"), "\n", "\\n", "g")
-	-- send substitute command to vim command line
-	vim.api.nvim_input("<Esc>:%s/" .. pattern .. "//gc<Left><Left><Left>")
-end)
-
--- toggle quickfix window
-vim.keymap.set("n", "<leader>gq", function()
-	local qf_winid = vim.fn.getqflist({ winid = 0 }).winid
-	local action = qf_winid > 0 and "cclose" or "copen"
-	vim.cmd("botright " .. action)
-end, { desc = "toggle quicklist", noremap = true, silent = true })
-
--- toggle quickfix window
-local toggle_qf = function()
-	local qf_exists = false
-	for _, win in pairs(vim.fn.getwininfo()) do
-		if win["quickfix"] == 1 then
-			qf_exists = true
-		end
-	end
-	if qf_exists == true then
-		vim.cmd("cclose")
-		return
-	end
-	if not vim.tbl_isempty(vim.fn.getqflist()) then
-		vim.cmd("copen")
-	end
-end
-vim.keymap.set("n", "<leader>q", toggle_qf, { desc = "toggle quickfix" })

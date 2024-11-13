@@ -2,6 +2,7 @@ return {
 	"folke/flash.nvim",
 	event = "VeryLazy",
 	opts = {
+		labels = "23456789asdfghjklqwertyuiopzxcvbnm",
 		search = {
 			multi_window = false,
 			-- Each mode will take ignorecase and smartcase into account.
@@ -16,7 +17,7 @@ return {
 				autohide = true,
 			},
 			search = {
-				enabled = false,
+				enabled = true,
 				highlight = { backdrop = false },
 				jump = { history = true, register = true, nohlsearch = true },
 				pattern = [[\%c\%v\%c]],
@@ -24,16 +25,16 @@ return {
 		},
 	},
 	keys = {
+		-- {
+		-- 	"s",
+		-- 	mode = { "n", "x", "o" },
+		-- 	function()
+		-- 		require("flash").jump()
+		-- 	end,
+		-- 	desc = "Flash",
+		-- },
 		{
-			"s",
-			mode = { "n", "x", "o" },
-			function()
-				require("flash").jump()
-			end,
-			desc = "Flash",
-		},
-		{
-			"<C-F>",
+			"vv",
 			mode = { "n", "x", "o" },
 			function()
 				require("flash").treesitter()

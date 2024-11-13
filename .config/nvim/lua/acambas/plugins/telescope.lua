@@ -35,11 +35,16 @@ return {
 		config = function()
 			pcall(require("telescope").load_extension, "fzf")
 			require("telescope").load_extension("ui-select")
-
+			local actions = require("telescope.actions")
 			require("telescope").setup({
 				defaults = {
 					layout_strategy = "vertical",
 					path_display = { "smart" },
+					mappings = {
+						i = {
+							["<esc>"] = actions.close,
+						},
+					},
 				},
 				pickers = {
 					find_files = {

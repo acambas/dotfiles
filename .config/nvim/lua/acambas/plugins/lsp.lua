@@ -6,11 +6,66 @@ return {
 		event = "VeryLazy",
 		dependencies = {
 			{ "neovim/nvim-lspconfig" },
-			{ "hrsh7th/cmp-nvim-lsp" },
-			{ "hrsh7th/nvim-cmp" },
-			{ "L3MON4D3/LuaSnip" },
-			{ "hrsh7th/cmp-buffer" },
-			{ "hrsh7th/cmp-path" },
+			{
+				"hrsh7th/nvim-cmp",
+				enabled = true,
+				dependencies = {
+					{ "hrsh7th/cmp-buffer" },
+					{ "hrsh7th/cmp-path" },
+					{ "L3MON4D3/LuaSnip" },
+					{ "hrsh7th/cmp-nvim-lsp" },
+				},
+				config = function()
+					-------------------------------------AUTOCOMPLETE------------------------------------------------
+					local cmp = require("cmp")
+					local luasnip = require("luasnip")
+					require("luasnip.loaders.from_vscode").lazy_load()
+					luasnip.config.setup()
+
+					local lsp_zero = require("lsp-zero")
+					cmp.setup({
+						sources = {
+							{ name = "nvim_lsp" },
+							{ name = "luasnip" },
+							{ name = "path" },
+							{ name = "buffer" },
+						},
+						formatting = lsp_zero.cmp_format(),
+						mapping = {
+							["<CR>"] = cmp.mapping.confirm({ select = false }),
+							-- ['<C-e>'] = cmp.mapping.abort(),
+							["<Up>"] = cmp.mapping.select_prev_item({ behavior = "select" }),
+							["<Down>"] = cmp.mapping.select_next_item({ behavior = "select" }),
+							["<C-j>"] = cmp.mapping(function(fallback)
+								if luasnip.expand_or_locally_jumpable() then
+									luasnip.expand_or_jump()
+								else
+									fallback()
+								end
+							end),
+							["<C-p>"] = cmp.mapping(function()
+								if cmp.visible() then
+									cmp.select_prev_item({ behavior = "insert" })
+								else
+									cmp.complete()
+								end
+							end),
+							["<C-n>"] = cmp.mapping(function()
+								if cmp.visible() then
+									cmp.select_next_item({ behavior = "insert" })
+								else
+									cmp.complete()
+								end
+							end),
+						},
+						snippet = {
+							expand = function(args)
+								require("luasnip").lsp_expand(args.body)
+							end,
+						},
+					})
+				end,
+			},
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			{
@@ -151,54 +206,6 @@ return {
 					--- it applies to every language server without a "custom handler"
 					function(server_name)
 						require("lspconfig")[server_name].setup({})
-					end,
-				},
-			})
-
-			-------------------------------------AUTOCOMPLETE------------------------------------------------
-			local cmp = require("cmp")
-			local luasnip = require("luasnip")
-			require("luasnip.loaders.from_vscode").lazy_load()
-			luasnip.config.setup()
-
-			cmp.setup({
-				sources = {
-					{ name = "nvim_lsp" },
-					{ name = "luasnip" },
-					{ name = "path" },
-					{ name = "buffer" },
-				},
-				formatting = lsp_zero.cmp_format(),
-				mapping = {
-					["<CR>"] = cmp.mapping.confirm({ select = false }),
-					-- ['<C-e>'] = cmp.mapping.abort(),
-					["<Up>"] = cmp.mapping.select_prev_item({ behavior = "select" }),
-					["<Down>"] = cmp.mapping.select_next_item({ behavior = "select" }),
-					["<C-j>"] = cmp.mapping(function(fallback)
-						if luasnip.expand_or_locally_jumpable() then
-							luasnip.expand_or_jump()
-						else
-							fallback()
-						end
-					end),
-					["<C-p>"] = cmp.mapping(function()
-						if cmp.visible() then
-							cmp.select_prev_item({ behavior = "insert" })
-						else
-							cmp.complete()
-						end
-					end),
-					["<C-n>"] = cmp.mapping(function()
-						if cmp.visible() then
-							cmp.select_next_item({ behavior = "insert" })
-						else
-							cmp.complete()
-						end
-					end),
-				},
-				snippet = {
-					expand = function(args)
-						require("luasnip").lsp_expand(args.body)
 					end,
 				},
 			})

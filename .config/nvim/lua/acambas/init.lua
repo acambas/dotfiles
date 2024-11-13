@@ -94,12 +94,12 @@ vim.api.nvim_create_user_command("PathCopyRel", function()
 	vim.fn.setreg("+", path)
 end, {}) -- copy relative path
 
--- vim.api.nvim_create_user_command('PathCopyAbs', function()
---   local path = vim.api.nvim_buf_get_name(0)
---   -- log the path
---   if vim.bo.filetype == 'oil' then
---     local oil = require("oil")
---     path = oil.get_current_dir()
---   end
---   vim.fn.setreg('+', path)
--- end, {}) -- absolute path
+vim.api.nvim_create_user_command("PathCopyAbs", function()
+	local path = vim.api.nvim_buf_get_name(0)
+	-- log the path
+	if vim.bo.filetype == "oil" then
+		local oil = require("oil")
+		path = oil.get_current_dir()
+	end
+	vim.fn.setreg("+", path)
+end, {}) -- absolute path
