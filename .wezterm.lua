@@ -25,6 +25,7 @@ config.keys = {
 	{ mods = "CMD", key = "l", action = wezterm.action.SendKey({ key = "RightArrow" }) },
 }
 config.font = wezterm.font("JetBrainsMono Nerd Font Mono")
+config.font_size = 13
 
 config.window_padding = {
 	left = 15,
