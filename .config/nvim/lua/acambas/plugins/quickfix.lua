@@ -4,7 +4,7 @@ return {
 	config = function()
 		require("bqf").setup({})
 	end,
-	enabled = false,
+	enabled = true,
 	dependencies = {
 		{
 			"junegunn/fzf",
