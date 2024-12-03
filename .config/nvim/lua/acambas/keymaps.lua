@@ -32,6 +32,8 @@ vim.keymap.set("v", "{", [[:s/\%V\(.*\)\%V/{\1}/ <CR>]], { desc = "Surround sele
 vim.keymap.set("v", "[", [[:s/\%V\(.*\)\%V/[\1]/ <CR>]], { desc = "Surround selection with [" }) -- Surround the visual selection with []
 vim.keymap.set("v", "n", 'y/<C-r>"<CR>N') -- Search the visual selection
 
+vim.keymap.set("n", "<Tab>", ":b#<CR>", { silent = true })
+
 -- Resize window using Alt and arrow keys
 vim.keymap.set("n", "<S-Left>", "<c-w>5<")
 vim.keymap.set("n", "<S-Right>", "<c-w>5>")

@@ -2,10 +2,10 @@ require("acambas.keymaps")
 require("acambas.lazy")
 
 -- fold settings
-vim.o.foldcolumn = "1" -- '0' is not bad
-vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
+vim.opt.fillchars = { fold = " " }
+vim.opt.foldmethod = "indent"
+vim.opt.foldenable = false
+vim.opt.foldlevel = 99
 -- misc settings
 vim.opt.autoread = true -- Auto refresh if the file has been changed outside of VIM
 

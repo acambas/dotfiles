@@ -82,7 +82,7 @@ autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/terraform terraform
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /opt/homebrew/share/zsh-vi-mode/zsh-vi-mode.zsh
+# source /opt/homebrew/share/zsh-vi-mode/zsh-vi-mode.zsh
 
 # ---- Zoxide (better cd) ----
 eval "$(zoxide init zsh)"
