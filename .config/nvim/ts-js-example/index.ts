@@ -49,7 +49,7 @@ function sasa() {
 }
 const i = sasa();
 const j = new foo();
-console.log("idem");
+console.info("idem");
 
 sasa();
 console.info();
