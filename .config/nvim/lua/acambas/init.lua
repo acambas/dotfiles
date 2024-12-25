@@ -42,7 +42,6 @@ vim.o.timeoutlen = 200
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,noselect"
 
-vim.opt.wrap = false
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
@@ -92,6 +91,7 @@ vim.api.nvim_create_user_command("PathCopyRel", function()
 		path = require("plenary").path:new(oil.get_current_dir()):make_relative()
 	end
 	vim.fn.setreg("+", path)
+	print("Path: " .. path)
 end, {}) -- copy relative path
 
 vim.api.nvim_create_user_command("PathCopyAbs", function()
@@ -101,5 +101,6 @@ vim.api.nvim_create_user_command("PathCopyAbs", function()
 		local oil = require("oil")
 		path = oil.get_current_dir()
 	end
+	print("Path: " .. path)
 	vim.fn.setreg("+", path)
 end, {}) -- absolute path

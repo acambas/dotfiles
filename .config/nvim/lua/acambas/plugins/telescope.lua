@@ -15,6 +15,30 @@ return {
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope-ui-select.nvim",
 			{
+				"albenisolmos/telescope-oil.nvim",
+				config = function()
+					-- optionally override defaults
+					-- local settings = require("telescope-oil.settings")
+					-- settings.set({ hidden = true })
+					-- settings.set({ no_ignore = false })
+					-- settings.set({ show_preview = true })
+
+					-- load extension
+					require("telescope").load_extension("oil")
+					require("telescope").setup({
+						extensions = {
+							oil = {
+								hidden = true,
+								debug = false,
+								no_ignore = false,
+								show_preview = true,
+							},
+						},
+					})
+					vim.keymap.set("n", "<leader>E", "<cmd>Telescope oil<CR>", { noremap = true, silent = true })
+				end,
+			},
+			{
 				"danielfalk/smart-open.nvim",
 				branch = "0.2.x",
 				config = function()

@@ -1,6 +1,6 @@
 return {
 	"nvim-lualine/lualine.nvim",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
+	dependencies = { "nvim-tree/nvim-web-devicons", { "yavorski/lualine-macro-recording.nvim" } },
 	cond = function()
 		if vim.g.vscode then
 			return false
@@ -30,9 +30,9 @@ return {
 			},
 			sections = {
 				lualine_a = { "mode" },
-				lualine_b = { "branch", "diff", "diagnostics" },
-				lualine_c = { { "filename", path = 1 } },
-				lualine_x = { "searchcount", "encoding", "fileformat", "filetype" },
+				lualine_b = {},
+				lualine_c = { { "filename", path = 1, file_status = true } },
+				lualine_x = { "searchcount", { "macro_recording", "%S" }, "filetype" },
 				lualine_y = { "progress" },
 				lualine_z = { "location" },
 			},

@@ -12,7 +12,6 @@ vim.keymap.set("n", "<C-U>", "<C-U>zz") -- Scroll up half a page and center the 
 vim.keymap.set({ "n", "v" }, "H", "^") -- Move to the start of the line in normal and visual mode
 vim.keymap.set({ "n", "v" }, "L", "$") -- Move to the end of the line in normal and visual mode
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true }) -- Disable the space key in normal and visual mode
-vim.keymap.set("n", "q", "<nop>") -- Disable the q key in normal mode
 vim.keymap.set("n", "S", "<nop>") -- Disable the S key in normal mode
 vim.keymap.set({ "n", "v" }, "c", '"xc') -- Cut to clipboard in normal and visual mode
 vim.keymap.set({ "v" }, "p", "P") -- Paste before the cursor in visual mode
@@ -25,12 +24,14 @@ vim.keymap.set("n", "n", "nzz", { remap = false }) -- Search next with n and cen
 vim.keymap.set("n", "N", "Nzz", { remap = false }) -- Search previous with N and center the cursor line
 vim.keymap.set("n", "*", "*zz", { remap = false }) -- Search the word under the cursor with * and center the cursor line
 vim.keymap.set("n", "<C-q>", "<C-w>q", { silent = true }) -- Close the current window with Ctrl+q
-vim.keymap.set("v", "'", [[:s/\%V\(.*\)\%V/'\1'/ <CR>]], { desc = "Surround selection with '" }) -- Surround the visual selection with ''
-vim.keymap.set("v", '"', [[:s/\%V\(.*\)\%V/"\1"/ <CR>]], { desc = 'Surround selection with "' }) -- Surround the visual selection with ''
-vim.keymap.set("v", "`", [[:s/\%V\(.*\)\%V/`\1`/ <CR>]], { desc = "Surround selection with `" }) -- Surround the visual selection with ``
-vim.keymap.set("v", "{", [[:s/\%V\(.*\)\%V/{\1}/ <CR>]], { desc = "Surround selection with {" }) -- Surround the visual selection with {}
-vim.keymap.set("v", "[", [[:s/\%V\(.*\)\%V/[\1]/ <CR>]], { desc = "Surround selection with [" }) -- Surround the visual selection with []
+vim.keymap.set("v", "'", [[<right>:s/\%V\(.*\%V\)/'\1'/ <CR>]], { desc = "Surround selection with '" }) -- Surround the visual selection with ''
+vim.keymap.set("v", '"', [[<right>:s/\%V\(.*\)\%V/"\1"/ <CR>]], { desc = 'Surround selection with "' }) -- Surround the visual selection with ''
+vim.keymap.set("v", "`", [[<right>:s/\%V\(.*\)\%V/`\1`/ <CR>]], { desc = "Surround selection with `" }) -- Surround the visual selection with ``
+vim.keymap.set("v", "{", [[<right>:s/\%V\(.*\)\%V/{\1}/ <CR>]], { desc = "Surround selection with {" }) -- Surround the visual selection with {}
+vim.keymap.set("v", "[", [[<right>:s/\%V\(.*\)\%V/[\1]/ <CR>]], { desc = "Surround selection with [" }) -- Surround the visual selection with []
+vim.keymap.set("v", "(", [[<right>:s/\%V\(.*\)\%V/\(\1\)/ <CR>]], { desc = "Surround selection with [" }) -- Surround the visual selection with []
 vim.keymap.set("v", "n", 'y/<C-r>"<CR>N') -- Search the visual selection
+vim.keymap.set({ "n", "v", "i" }, "<C-g>", "<esc>") --
 
 vim.keymap.set("n", "<Tab>", ":b#<CR>", { silent = true })
 
