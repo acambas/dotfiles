@@ -26,6 +26,7 @@ config.keys = {
 }
 config.font = wezterm.font("JetBrainsMono Nerd Font Mono")
 config.font_size = 13
+config.max_fps = 120
 
 config.window_padding = {
 	left = 15,

@@ -29,7 +29,7 @@ html`<div>
   <div>foo</div>
 </div>`;
 
-console.info("asd");
+console.info(u);
 console.info("idemooo");
 import qwe from "./qwe.ts";
 console.info(qwe);

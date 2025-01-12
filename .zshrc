@@ -7,7 +7,9 @@ export LANG=en_US.UTF-8
 # Use nvim as the default editor
 export EDITOR="nvim"
 
-export PATH=/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin:/opt/homebrew/bin -
+export PATH=/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin -
+export PATH="/opt/homebrew/sbin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
 export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="robbyrussell"

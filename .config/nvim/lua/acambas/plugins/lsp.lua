@@ -41,9 +41,7 @@ return {
 					keymap = { preset = "enter" },
 
 					completion = {
-						list = {
-							selection = "manual",
-						},
+						list = { selection = { preselect = false, auto_insert = true } },
 					},
 
 					-- highlight = {
