@@ -15,7 +15,7 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true }) -- Disable t
 vim.keymap.set("n", "S", "<nop>") -- Disable the S key in normal mode
 vim.keymap.set({ "n", "v" }, "c", '"xc') -- Cut to clipboard in normal and visual mode
 vim.keymap.set({ "v" }, "p", "P") -- Paste before the cursor in visual mode
-vim.keymap.set("n", "<leader>a", "ggVG") -- Select all text in the file
+vim.keymap.set("n", "ga", "ggVG") -- Select all text in the file
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n><C-w>h", { silent = true }) -- Exit terminal mode with Esc
 vim.keymap.set("i", "<m-backspace>", "<C-w>") -- Delete the previous word in insert mode with Alt+Backspace
 vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>", noremap_silent) -- Clear search highlight with Esc in normal mode
