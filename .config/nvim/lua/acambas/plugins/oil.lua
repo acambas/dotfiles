@@ -7,6 +7,7 @@ return {
 			return true
 		end
 	end,
+
 	config = function()
 		require("oil").setup({
 			view_options = {
@@ -39,7 +40,7 @@ return {
 				-- "mtime",
 			},
 		})
-		vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+		vim.keymap.set("n", "<bs>", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 		-- vim.keymap.set("n", "<leader>E", function()
 		--   -- copy path of current buffers directory to a local variable
 		--   local path = vim.fn.expand("%:p:h")
@@ -51,5 +52,13 @@ return {
 		-- end, { desc = "Open parent directory" })
 	end,
 	-- Optional dependencies
-	dependencies = { "nvim-tree/nvim-web-devicons" },
+	dependencies = {
+		"nvim-tree/nvim-web-devicons",
+		{
+			"skardyy/neo-img",
+			config = function()
+				require("neo-img").setup()
+			end,
+		},
+	},
 }

@@ -138,15 +138,17 @@ return {
 							lua = { "stylua" },
 							-- Conform will run multiple formatters sequentially
 							-- Use a sub-list to run only the first available formatter
-							javascript = { { "prettierd", "prettier" } },
-							typescript = { { "prettierd", "prettier" } },
-							javascriptreact = { { "prettierd", "prettier" } },
-							typescriptreact = { { "prettierd", "prettier" } },
-							json = { { "prettierd", "prettier" } },
-							html = { { "prettierd", "prettier" } },
-							css = { { "prettierd", "prettier" } },
-							yaml = { { "prettierd", "prettier" } },
-							markdown = { { "prettierd", "prettier" } },
+							--     javascript = { "prettierd", "prettier", stop_after_first = true },
+
+							javascript = { "prettierd", "prettier", stop_after_first = true },
+							typescript = { "prettierd", "prettier", stop_after_first = true },
+							javascriptreact = { "prettierd", "prettier", stop_after_first = true },
+							typescriptreact = { "prettierd", "prettier", stop_after_first = true },
+							json = { "prettierd", "prettier", stop_after_first = true },
+							html = { "prettierd", "prettier", stop_after_first = true },
+							css = { "prettierd", "prettier", stop_after_first = true },
+							yaml = { "prettierd", "prettier", stop_after_first = true },
+							markdown = { "prettierd", "prettier", stop_after_first = true },
 						},
 					})
 				end,

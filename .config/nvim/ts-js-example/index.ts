@@ -31,7 +31,9 @@ html`<div>
 
 console.info(u);
 console.info("idemooo");
+
 import qwe from "./qwe.ts";
+
 console.info(qwe);
 console.info("ideoooo");
 
