@@ -54,11 +54,5 @@ return {
 	-- Optional dependencies
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
-		{
-			"skardyy/neo-img",
-			config = function()
-				require("neo-img").setup()
-			end,
-		},
 	},
 }

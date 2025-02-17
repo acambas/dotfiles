@@ -10,7 +10,7 @@ return {
 	{
 		"brenton-leighton/multiple-cursors.nvim",
 		version = "*", -- Use the latest tagged version
-		enabled = true,
+		enabled = false,
 		opts = {
 			pre_hook = function()
 				vim.g.minipairs_disable = true
@@ -34,7 +34,7 @@ return {
 	{
 		"jake-stewart/multicursor.nvim",
 		branch = "1.0",
-		enabled = false,
+		enabled = true,
 		event = "VeryLazy",
 		config = function()
 			local mc = require("multicursor-nvim")

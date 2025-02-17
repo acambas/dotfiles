@@ -22,9 +22,10 @@ source $ZSH/oh-my-zsh.sh
 [ -f ~/.secrets.sh ] && source ~/.secrets.sh
 
 
-# ---------------------------- aliases ----------------------------
 export PATH=$PATH:/Users/aleksandarcambas/.local/bin
 export PATH=$PATH:~/.volta/bin/
+export PATH=$PATH:~/go/bin/
+# ---------------------------- aliases ----------------------------
 
 # General
 alias reload="source ~/.zshrc"

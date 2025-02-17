@@ -224,16 +224,18 @@ return {
 						info = "»",
 					},
 				})
-				nmap("gd", require("telescope.builtin").lsp_definitions, "go to definition")
 				nmap("gD", vim.lsp.buf.declaration, "go to Declaration")
 				nmap("gi", vim.lsp.buf.implementation, "go to implementation")
-				nmap("gt", require("telescope.builtin").lsp_type_definitions, "go to type definitions")
 				nmap("gh", vim.lsp.buf.hover, "go to hover")
-				nmap("<leader>cd", require("telescope.builtin").diagnostics, "go to diagnostics")
-				nmap("gr", require("telescope.builtin").lsp_references, "go to references")
+				nmap("<leader>ca", vim.lsp.buf.code_action, "go to actions")
+				-- nmap("gd", require("telescope.builtin").lsp_definitions, "go to definition")
+
+				-- nmap("<leader>cd", require("telescope.builtin").diagnostics, "go to diagnostics")
+				-- nmap("gt", require("telescope.builtin").lsp_type_definitions, "go to type definitions")
+				-- nmap("gr", require("telescope.builtin").lsp_references, "go to references")
 
 				nmap("<leader>cr", vim.lsp.buf.rename, "rename")
-				vim.keymap.set({ "v", "n" }, "<leader>ca", require("actions-preview").code_actions)
+				-- vim.keymap.set({ "v", "n" }, "<leader>ca", require("actions-preview").code_actions)
 				vim.keymap.set("n", "ge", "<cmd>lua vim.diagnostic.open_float()<cr>")
 				vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>")
 				vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>")
