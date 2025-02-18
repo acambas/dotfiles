@@ -227,6 +227,11 @@ return {
 				nmap("gD", vim.lsp.buf.declaration, "go to Declaration")
 				nmap("gi", vim.lsp.buf.implementation, "go to implementation")
 				nmap("gh", vim.lsp.buf.hover, "go to hover")
+
+				nmap("gd", vim.lsp.buf.definition, "go to definition")
+				nmap("gr", vim.lsp.buf.references, "go to references")
+				nmap("gt", vim.lsp.buf.type_definition, "go to type")
+
 				nmap("<leader>ca", vim.lsp.buf.code_action, "go to actions")
 				-- nmap("gd", require("telescope.builtin").lsp_definitions, "go to definition")
 
