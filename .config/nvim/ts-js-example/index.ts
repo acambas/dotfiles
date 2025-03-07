@@ -1,9 +1,9 @@
-console.info("Hello via Bun!");
+console.log("Hello via Bun!");
 if (1 <= 2) {
-  console.info("1 <= 2");
+  console.log("1 <= 2");
 }
 for (const zxc of [1, 2, 3]) {
-  console.info(zxc);
+  console.log(zxc);
 }
 
 class Foo {
@@ -29,13 +29,13 @@ html`<div>
   <div>foo</div>
 </div>`;
 
-console.info(u);
-console.info("idemooo");
+console.log(u);
+console.log("idemooo");
 
 import qwe from "./qwe.ts";
 
-console.info(qwe);
-console.info("ideoooo");
+console.log(qwe);
+console.log("ideoooo");
 
 const a = new Foo();
 
@@ -45,13 +45,13 @@ a.sdf = "zxc";
 a.bjjg = "zxc";
 
 function sasa() {
-  console.info(b);
-  console.info("idemoosdfsdf");
+  console.log(b);
+  console.log("idemoosdfsdf");
   return 2;
 }
 const i = sasa();
 const j = new foo();
-console.info("idem");
+console.log("idem");
 
 sasa();
-console.info();
+console.log();

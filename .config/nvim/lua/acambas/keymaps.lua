@@ -33,7 +33,7 @@ vim.keymap.set("v", "(", [[<right>:s/\%V\(.*\)\%V/\(\1\)/ <CR>]], { desc = "Surr
 vim.keymap.set("v", "n", 'y/<C-r>"<CR>N') -- Search the visual selection
 vim.keymap.set({ "n", "v", "i" }, "<C-g>", "<esc>") --
 
-vim.keymap.set("n", "<Tab>", ":b#<CR>", { silent = true })
+vim.keymap.set("n", "<C-t>", ":b#<CR>", { silent = true })
 
 -- Resize window using Alt and arrow keys
 vim.keymap.set("n", "<S-Left>", "<c-w>5<")
