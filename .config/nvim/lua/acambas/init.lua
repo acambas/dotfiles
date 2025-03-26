@@ -10,6 +10,8 @@ vim.opt.foldlevel = 99
 vim.opt.autoread = true -- Auto refresh if the file has been changed outside of VIM
 
 vim.opt.cmdheight = 0
+vim.opt.scroll = 10
+vim.cmd([[set scroll=10]])
 vim.opt.statusline = "%f - %y %=%S %l %L"
 vim.opt.showcmdloc = "statusline"
 -- Set highlight on search

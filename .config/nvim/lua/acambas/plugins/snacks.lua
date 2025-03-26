@@ -23,7 +23,7 @@ return {
 			"<leader>sg",
 			function()
 				require("snacks").picker.grep({
-					finder = "grep",
+					-- finder = "grep",
 					regex = false,
 					-- format = "file",
 					-- show_empty = true,
@@ -138,6 +138,9 @@ return {
 				},
 			},
 			picker = {
+				main = {
+					file = false,
+				},
 				win = {
 					input = {
 						keys = {

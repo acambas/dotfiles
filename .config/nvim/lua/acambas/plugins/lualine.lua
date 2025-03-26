@@ -25,7 +25,7 @@ return {
 				refresh = {
 					statusline = 100,
 					tabline = 100,
-					winbar = 100,
+					winbar = 35,
 				},
 			},
 			sections = {
@@ -49,7 +49,7 @@ return {
 				lualine_a = {
 					{
 						"filename",
-						path = 1, -- Relative  path
+						path = 4, -- Relative  path
 						symbols = {
 							modified = "Δ", -- Text to show when the file is modified.
 							readonly = "", -- Text to show when the file is non-modifiable or readonly.
@@ -61,7 +61,7 @@ return {
 				lualine_a = {
 					{
 						"filename",
-						path = 1, -- Relative path
+						path = 4, -- Relative path
 						symbols = {
 							modified = "Δ", -- Text to show when the file is modified.
 							readonly = "", -- Text to show when the file is non-modifiable or readonly.
