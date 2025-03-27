@@ -142,6 +142,7 @@ return {
 			},
 			{
 				"pmizio/typescript-tools.nvim",
+				enabled = false,
 				dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 				-- opts = {},
 			},
@@ -195,31 +196,35 @@ return {
 						info = "»",
 					},
 				})
+
 				nmap("gD", vim.lsp.buf.declaration, "go to Declaration")
 				nmap("gi", vim.lsp.buf.implementation, "go to implementation")
 				nmap("gh", vim.lsp.buf.hover, "go to hover")
 
 				nmap("gd", vim.lsp.buf.definition, "go to definition")
-				nmap("gr", vim.lsp.buf.references, "go to references")
+				-- nmap("gr", vim.lsp.buf.references, "go to references")
 				nmap("gt", vim.lsp.buf.type_definition, "go to type")
 
-				nmap("<leader>ca", vim.lsp.buf.code_action, "go to actions")
+				-- nmap("<leader>ca", vim.lsp.buf.code_action, "go to actions")
 				-- nmap("gd", require("telescope.builtin").lsp_definitions, "go to definition")
 
 				-- nmap("<leader>cd", require("telescope.builtin").diagnostics, "go to diagnostics")
 				-- nmap("gt", require("telescope.builtin").lsp_type_definitions, "go to type definitions")
 				-- nmap("gr", require("telescope.builtin").lsp_references, "go to references")
 
-				nmap("<leader>cr", vim.lsp.buf.rename, "rename")
+				-- nmap("<leader>cr", vim.lsp.buf.rename, "rename")
 				-- vim.keymap.set({ "v", "n" }, "<leader>ca", require("actions-preview").code_actions)
 				vim.keymap.set("n", "ge", "<cmd>lua vim.diagnostic.open_float()<cr>")
-				vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>")
-				vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>")
 			end)
 			vim.opt.signcolumn = "yes"
 			vim.diagnostic.config({
 				virtual_text = false,
+				-- virtual_lines = {
+				-- 	-- Only show virtual line diagnostics for the current cursor line
+				-- 	current_line = true,
+				-- },
 				signs = true,
+				-- virtual_text = { current_line = true },
 			})
 
 			-------------------------------------MASON------------------------------------------------

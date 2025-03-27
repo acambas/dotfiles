@@ -32,6 +32,8 @@ html`<div>
 console.log(u);
 console.log("idemooo");
 
+console.log("idemooo");
+
 import qwe from "./qwe.ts";
 
 console.log(qwe);
