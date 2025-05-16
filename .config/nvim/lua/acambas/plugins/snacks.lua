@@ -3,73 +3,73 @@ return {
 	priority = 1000,
 	lazy = false,
 	keys = {
-		{
-			"<leader><space>",
-			function()
-				require("snacks").picker.smart({
-					layout = {
-						-- preset = "ivy",
-						-- preset = "vscode",
-						-- preset = "dafault",
-						-- preset = "dropdown",
-						preset = "vertical",
-					},
-					filter = { cwd = true },
-				})
-			end,
-			desc = "Smart Find Files",
-		},
-		{
-			"<leader>sg",
-			function()
-				require("snacks").picker.grep({
-					-- finder = "grep",
-					regex = false,
-					-- format = "file",
-					-- show_empty = true,
-					-- live = true, -- live grep by default
-					-- supports_live = true,
-					filter = { cwd = true },
-				})
-			end,
-			desc = "Grep",
-		},
-		{
-			"<leader>sg",
-			function()
-				require("snacks").picker.grep_word({ regex = false })
-			end,
-			desc = "Visual selection or word",
-			mode = { "v" },
-		},
-		{
-			"<leader>sb",
-			function()
-				require("snacks").picker.buffers()
-			end,
-			desc = "Buffers",
-		},
-		{
-			"<leader>sn",
-			function()
-				require("snacks").picker.notifications()
-			end,
-			desc = "Notification History",
-		},
-		{
-			"<leader>sj",
-			function()
-				require("snacks").picker.jumps()
-			end,
-			desc = "Jumps",
-		},
-		{
-			"<leader>q",
-			function()
-				require("snacks").picker.qflist()
-			end,
-			desc = "Quickfix List",
-		},
+		-- {
+		-- 	"<leader><space>",
+		-- 	function()
+		-- 		require("snacks").picker.smart({
+		-- 			layout = {
+		-- 				-- preset = "ivy",
+		-- 				-- preset = "vscode",
+		-- 				-- preset = "dafault",
+		-- 				-- preset = "dropdown",
+		-- 				preset = "vertical",
+		-- 			},
+		-- 			filter = { cwd = true },
+		-- 		})
+		-- 	end,
+		-- 	desc = "Smart Find Files",
+		-- },
+		-- {
+		-- 	"<leader>sg",
+		-- 	function()
+		-- 		require("snacks").picker.grep({
+		-- 			-- finder = "grep",
+		-- 			regex = false,
+		-- 			-- format = "file",
+		-- 			-- show_empty = true,
+		-- 			-- live = true, -- live grep by default
+		-- 			-- supports_live = true,
+		-- 			filter = { cwd = true },
+		-- 		})
+		-- 	end,
+		-- 	desc = "Grep",
+		-- },
+		-- {
+		-- 	"<leader>sg",
+		-- 	function()
+		-- 		require("snacks").picker.grep_word({ regex = false })
+		-- 	end,
+		-- 	desc = "Visual selection or word",
+		-- 	mode = { "v" },
+		-- },
+		-- {
+		-- 	"<leader>sb",
+		-- 	function()
+		-- 		require("snacks").picker.buffers()
+		-- 	end,
+		-- 	desc = "Buffers",
+		-- },
+		-- {
+		-- 	"<leader>sn",
+		-- 	function()
+		-- 		require("snacks").picker.notifications()
+		-- 	end,
+		-- 	desc = "Notification History",
+		-- },
+		-- {
+		-- 	"<leader>sj",
+		-- 	function()
+		-- 		require("snacks").picker.jumps()
+		-- 	end,
+		-- 	desc = "Jumps",
+		-- },
+		-- {
+		-- 	"<leader>q",
+		-- 	function()
+		-- 		require("snacks").picker.qflist()
+		-- 	end,
+		-- 	desc = "Quickfix List",
+		-- },
 		-- lsp picker
 		-- {
 		-- 	"<leader>sd",
@@ -138,6 +138,7 @@ return {
 				},
 			},
 			picker = {
+				enabled = false,
 				main = {
 					file = false,
 				},

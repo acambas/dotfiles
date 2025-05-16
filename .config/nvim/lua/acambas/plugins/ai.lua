@@ -63,7 +63,7 @@ return {
 						-- accept = "<M-l>",
 						accept = false,
 						accept_word = false,
-						accept_line = "<tab>",
+						accept_line = "<c-y>",
 						next = "<M-]>",
 						prev = "<M-[>",
 						dismiss = "<S-tab>",
