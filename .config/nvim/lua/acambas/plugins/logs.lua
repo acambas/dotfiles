@@ -12,10 +12,10 @@ return {
 					--   [[logger.info('hello world')]],
 					--   auto_import = [[const logger = require('pino')()]]
 					-- }
-					javascript = [[console.log("--%log_marker %log_target\n", %log_target)]],
-					typescript = [[console.log("--%log_marker %log_target\n", %log_target)]],
-					jsx = [[console.log("--%log_marker %log_target\n", %log_target)]],
-					tsx = [[console.log("--%log_marker %log_target\n", %log_target)]],
+					javascript = [[console.log("--%log_marker %log_target", %log_target)]],
+					typescript = [[console.log("--%log_marker %log_target", %log_target)]],
+					jsx = [[console.log("--%log_marker %log_target", %log_target)]],
+					tsx = [[console.log("--%log_marker %log_target", %log_target)]],
 				},
 				plain = {
 					javascript = [[console.log("============%insert_cursor")]],
@@ -44,7 +44,7 @@ return {
 			},
 			-- The string to search for when deleting or commenting log statements
 			-- Can be used in log templates as %log_marker placeholder
-			log_marker = "🪵",
+			log_marker = "🪵sasa",
 			-- Controls the flash highlight
 			highlight = {
 				-- After a log statement is inserted

@@ -10,7 +10,8 @@ vim.keymap.set("n", "M", "gM", noremap_silent) -- Move to the middle of the line
 vim.keymap.set("n", "<C-D>", "<C-D>zz") -- Scroll down half a page and center the cursor line
 vim.keymap.set("n", "<C-U>", "<C-U>zz") -- Scroll up half a page and center the cursor line
 vim.keymap.set({ "n", "v" }, "H", "^") -- Move to the start of the line in normal and visual mode
-vim.keymap.set({ "n", "v" }, "L", "$") -- Move to the end of the line in normal and visual mode
+vim.keymap.set({ "n" }, "L", "$") -- Move to the end of the line in normal and visual mode
+vim.keymap.set({ "v" }, "L", "$h") -- Move to the end of the line in normal and visual mode
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true }) -- Disable the space key in normal and visual mode
 vim.keymap.set("n", "S", "<nop>") -- Disable the S key in normal mode
 vim.keymap.set({ "n", "v" }, "c", '"xc') -- Cut to clipboard in normal and visual mode
