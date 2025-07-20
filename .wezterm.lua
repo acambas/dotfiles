@@ -38,6 +38,6 @@ config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 config.send_composed_key_when_left_alt_is_pressed = false
 config.send_composed_key_when_right_alt_is_pressed = false
 config.window_decorations = "RESIZE"
-config.window_background_opacity = 0.95
+config.window_background_opacity = 0.92
 -- and finally, return the configuration to wezterm
 return config
