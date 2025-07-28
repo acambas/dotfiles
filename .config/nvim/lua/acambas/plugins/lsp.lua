@@ -1,11 +1,9 @@
 return {
 	{
 		enabled = true,
-		"VonHeikemen/lsp-zero.nvim",
-		branch = "v3.x",
+		"neovim/nvim-lspconfig",
 		event = "VeryLazy",
 		dependencies = {
-			{ "neovim/nvim-lspconfig" },
 			{
 				"rachartier/tiny-inline-diagnostic.nvim",
 				event = "VeryLazy", -- Or `LspAttach`
@@ -111,18 +109,17 @@ return {
 			vim.opt.signcolumn = "yes"
 			vim.diagnostic.config({
 				virtual_text = false,
+				-- virtual_text = { current_line = true },
 				-- virtual_lines = {
 				-- 	-- Only show virtual line diagnostics for the current cursor line
 				-- 	current_line = true,
 				-- },
 				signs = true,
-				-- virtual_text = { current_line = true },
 			})
 
 			-------------------------------------MASON------------------------------------------------
 
 			-- to learn how to use mason.nvim
-			-- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guide/integrate-with-mason-nvim.md
 			require("mason").setup({})
 			require("mason-lspconfig").setup({
 				ensure_installed = {

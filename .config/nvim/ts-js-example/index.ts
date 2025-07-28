@@ -51,6 +51,7 @@ function sasa() {
   console.log("idemoosdfsdf");
   return 2;
 }
+
 const i = sasa();
 const j = new foo();
 
