@@ -80,12 +80,6 @@ return {
 				-- this is equalent to setup({}) function
 			},
 			{
-				"pmizio/typescript-tools.nvim",
-				enabled = false,
-				dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-				-- opts = {},
-			},
-			{
 				"RRethy/vim-illuminate",
 				config = function()
 					require("illuminate").configure({
