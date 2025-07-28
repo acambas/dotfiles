@@ -1,5 +1,19 @@
 return {
 	{
+		"greggh/claude-code.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim", -- Required for git operations
+		},
+		enabled = false,
+		config = function()
+			require("claude-code").setup({
+				git = {
+					use_git_root = false, -- Set CWD to git root when opening Claude Code (if in git project)
+				},
+			})
+		end,
+	},
+	{
 		"NickvanDyke/opencode.nvim",
 		event = "VeryLazy",
 		lazy = true,
@@ -33,7 +47,7 @@ return {
 		config = function()
 			require("avante").setup({
 				-- default options
-				provider = "copilot", -- or "openai", "ollama", "gemini", "mistral", "deepseek", "llama3", "llama2"
+				provider = "claude", -- or "openai", "ollama", "gemini", "mistral", "deepseek", "llama3", "llama2"
 				-- copilot = {
 				-- 	model = "claude-3.7-sonnet",
 				-- },

@@ -36,6 +36,9 @@ vim.keymap.set({ "n", "v", "i" }, "<C-g>", "<esc>") --
 
 vim.keymap.set("n", "<C-t>", ":b#<CR>", { silent = true })
 
+-- exit terminal mode with alt-escape
+vim.keymap.set("t", "<M-Esc>", "<C-\\><C-n >", { silent = true })
+
 -- Resize window using Alt and arrow keys
 vim.keymap.set("n", "<S-Left>", "<c-w>5<")
 vim.keymap.set("n", "<S-Right>", "<c-w>5>")

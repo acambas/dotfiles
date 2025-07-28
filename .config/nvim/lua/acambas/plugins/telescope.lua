@@ -12,7 +12,7 @@ local smart_grep = function(opts)
 			if not prompt or prompt == "" then
 				return nil
 			end
-			local pieces = vim.split(prompt, "  ")
+			local pieces = vim.split(prompt, " | ")
 			local args = { "rg" }
 			if pieces[1] then
 				table.insert(args, "-e")

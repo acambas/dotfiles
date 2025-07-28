@@ -47,6 +47,8 @@ example:
 export GITHUB_TOKEN=123
 ```
 
+for sending secrets from one place to another use brew tool: magic-wormhole
+
 # tmux
 
 in order to setup tmux sessionizer you need to run
