@@ -106,34 +106,8 @@ return {
 			},
 		},
 		config = function()
-			local lsp_zero = require("lsp-zero")
-			lsp_zero.on_attach(function(client, bufnr)
-				-- see :help lsp-zero-keybindings
-				-- to learn the available actions
-				lsp_zero.default_keymaps({ buffer = bufnr })
-				local nmap = function(keys, func, desc)
-					if desc then
-						desc = "LSP: " .. desc
-					end
-					vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
-				end
-				lsp_zero.extend_lspconfig({
-					sign_text = true,
-				})
-				lsp_zero.extend_lspconfig({
-					sign_text = {
-						error = "✘",
-						warn = "▲",
-						hint = "⚑",
-						info = "»",
-					},
-				})
-
-				nmap("gh", vim.lsp.buf.hover, "go to hover")
-
-				nmap("gd", vim.lsp.buf.definition, "go to definition")
-				-- nmap("gt", vim.lsp.buf.type_definition, "go to type")
-			end)
+			vim.keymap.set("n", "gh", vim.lsp.buf.hover, { desc = "go to hover" })
+			vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "go to hover" })
 			vim.opt.signcolumn = "yes"
 			vim.diagnostic.config({
 				virtual_text = false,
