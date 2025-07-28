@@ -1,9 +1,0 @@
-{
-  "html.autoClosingTags": true,
-  "coc.preferences.formatOnSave": true,
-  "marksman.enable": true,
-  "pretty-ts-errors.enable": true,
-  "suggest.noselect": true,
-  "suggest.virtualText": true,
-  "suggest.maxCompleteItemCount": 20
-}
