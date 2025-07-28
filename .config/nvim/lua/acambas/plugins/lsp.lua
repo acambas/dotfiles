@@ -107,7 +107,6 @@ return {
 		},
 		config = function()
 			local lsp_zero = require("lsp-zero")
-			---@diagnostic disable-next-line: unused-local
 			lsp_zero.on_attach(function(client, bufnr)
 				-- see :help lsp-zero-keybindings
 				-- to learn the available actions
@@ -130,24 +129,10 @@ return {
 					},
 				})
 
-				nmap("gD", vim.lsp.buf.declaration, "go to Declaration")
-				nmap("gi", vim.lsp.buf.implementation, "go to implementation")
 				nmap("gh", vim.lsp.buf.hover, "go to hover")
 
 				nmap("gd", vim.lsp.buf.definition, "go to definition")
-				-- nmap("gr", vim.lsp.buf.references, "go to references")
-				nmap("gt", vim.lsp.buf.type_definition, "go to type")
-
-				-- nmap("<leader>ca", vim.lsp.buf.code_action, "go to actions")
-				-- nmap("gd", require("telescope.builtin").lsp_definitions, "go to definition")
-
-				-- nmap("<leader>cd", require("telescope.builtin").diagnostics, "go to diagnostics")
-				-- nmap("gt", require("telescope.builtin").lsp_type_definitions, "go to type definitions")
-				-- nmap("gr", require("telescope.builtin").lsp_references, "go to references")
-
-				-- nmap("<leader>cr", vim.lsp.buf.rename, "rename")
-				-- vim.keymap.set({ "v", "n" }, "<leader>ca", require("actions-preview").code_actions)
-				vim.keymap.set("n", "ge", "<cmd>lua vim.diagnostic.open_float()<cr>")
+				-- nmap("gt", vim.lsp.buf.type_definition, "go to type")
 			end)
 			vim.opt.signcolumn = "yes"
 			vim.diagnostic.config({

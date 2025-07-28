@@ -1,13 +1,4 @@
-local vscode_disable = function()
-	if vim.g.vscode then
-		return false
-	else
-		return true
-	end
-end
-
 return {
-
 	{
 		"jake-stewart/multicursor.nvim",
 		branch = "1.0",
