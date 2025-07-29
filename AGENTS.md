@@ -1,32 +1,32 @@
 # AGENTS.md
 
-## Setup and Management Commands
+## Build/Test/Lint Commands
 
-- **Install Stow:** `brew install stow`
-- **Apply dotfiles:** `stow .` (run from dotfiles directory)
-- **Install all packages:** `brew bundle` (installs from Brewfile)
-- **Setup macOS settings:** `chmod +x ~/.macos && ~/.macos`
-- **Setup tmux sessionizer:** `chmod +x ~/tmux-sessionizer`
-- **Reload shell config:** `source ~/.zshrc` or `reload` alias
+- **No build system** - This is a dotfiles repository with configuration files only
+- **Lua formatting:** `stylua .config/nvim/` (auto-formats on save via Conform.nvim)
+- **Shell linting:** Use shellcheck for shell scripts (not automated)
+- **Config validation:** `stow .` to test symlink creation without errors
+- **Neovim config test:** `nvim --headless -c 'qa'` to validate Lua syntax
 
-## Configuration File Guidelines
+## Code Style Guidelines
 
-- **Shell Scripts (.sh, .zsh):**
-  - Use 2-space indentation
-  - Quote variables: `"$variable"` not `$variable`
-  - Use `#!/bin/zsh` or `#!/bin/bash` shebangs
 - **Lua Files (.lua):**
-  - Follow existing Neovim config patterns
-  - Use 2-space indentation, no tabs
-  - Prefer explicit returns for plugin configs
-- **YAML/Config Files:**
-  - Maintain existing indentation (usually 2 spaces)
-  - Keep comments aligned and descriptive
+  - 2-space indentation, no tabs
+  - Return plugin config tables explicitly: `return { ... }`
+  - Use `event = "VeryLazy"` for lazy loading
+  - Quote keys in tables: `["key"] = value`
+  - Follow existing plugin patterns in `.config/nvim/lua/acambas/plugins/`
+- **Shell Scripts (.sh, .zsh):**
+  - 2-space indentation
+  - Quote all variables: `"$variable"` not `$variable`
+  - Use proper shebangs: `#!/bin/zsh` or `#!/bin/bash`
+- **Imports/Dependencies:**
+  - Lua: Use `require("module")` at function scope when possible
+  - Plugin dependencies: List in `dependencies = { ... }` array
 - **Naming Conventions:**
   - Config files: lowercase with dots (`.zshrc`, `.tmux.conf`)
-  - Scripts: kebab-case (`tmux-sessionizer.sh`)
+  - Plugin files: kebab-case (`multi-cursor.lua`, `better-yank.lua`)
   - Directories: lowercase (`wallpapers/`, `.config/`)
-- **File Organization:**
-  - Keep related configs in `.config/` subdirectories
-  - Use descriptive filenames that match their purpose
-  - Maintain the existing directory structure
+- **Error Handling:**
+  - Use conditional sourcing: `[ -f file ] && source file`
+  - Lua: Wrap risky operations in pcall when appropriate
