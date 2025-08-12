@@ -28,8 +28,8 @@ vim.keymap.set("v", "L", "$h")
 vim.keymap.set("n", "M", "gM", noremap_silent)
 
 -- Centered scrolling
-vim.keymap.set("n", "<C-D>", "<C-D>zz")
-vim.keymap.set("n", "<C-U>", "<C-U>zz")
+vim.keymap.set("n", "<C-D>", "12jzz")
+vim.keymap.set("n", "<C-U>", "12kzz")
 
 -- Buffer navigation
 vim.keymap.set("n", "<C-t>", ":b#<CR>", { silent = true })

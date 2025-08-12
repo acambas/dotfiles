@@ -45,30 +45,30 @@ return {
 				lualine_z = {},
 			},
 			tabline = {},
-			winbar = {
-				lualine_a = {
-					{
-						"filename",
-						path = 4, -- Relative  path
-						symbols = {
-							modified = "Δ", -- Text to show when the file is modified.
-							readonly = "", -- Text to show when the file is non-modifiable or readonly.
-						},
-					},
-				},
-			},
-			inactive_winbar = {
-				lualine_a = {
-					{
-						"filename",
-						path = 4, -- Relative path
-						symbols = {
-							modified = "Δ", -- Text to show when the file is modified.
-							readonly = "", -- Text to show when the file is non-modifiable or readonly.
-						},
-					},
-				},
-			},
+			-- winbar = {
+			-- 	lualine_a = {
+			-- 		{
+			-- 			"filename",
+			-- 			path = 4, -- Relative  path
+			-- 			symbols = {
+			-- 				modified = "Δ", -- Text to show when the file is modified.
+			-- 				readonly = "", -- Text to show when the file is non-modifiable or readonly.
+			-- 			},
+			-- 		},
+			-- 	},
+			-- },
+			-- inactive_winbar = {
+			-- 	lualine_a = {
+			-- 		{
+			-- 			"filename",
+			-- 			path = 4, -- Relative path
+			-- 			symbols = {
+			-- 				modified = "Δ", -- Text to show when the file is modified.
+			-- 				readonly = "", -- Text to show when the file is non-modifiable or readonly.
+			-- 			},
+			-- 		},
+			-- 	},
+			-- },
 			extensions = { "oil", "lazy" },
 		})
 	end,
