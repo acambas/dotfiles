@@ -131,40 +131,6 @@ return {
 					"lua_ls",
 					"bashls",
 				},
-				handlers = {
-					--- this first function is the "default handler"
-					--- it applies to every language server without a "custom handler"
-					function(server_name)
-						require("lspconfig")[server_name].setup({})
-					end,
-					vtsls = function()
-						require("lspconfig").vtsls.setup({
-							settings = {
-								typescript = {
-									preferences = {
-										includePackageJsonAutoImports = "off",
-										updateImportsOnPaste = "off",
-									},
-								},
-								vtsls = {
-									experimental = {
-										completion = {
-											entriesLimit = 25,
-											enableServerSizeFuzzyMatch = true,
-										},
-									},
-								},
-							},
-						})
-					end,
-					cssls = function()
-						local capabilities = vim.lsp.protocol.make_client_capabilities()
-						capabilities.textDocument.completion.completionItem.snippetSupport = true
-						require("lspconfig").cssls.setup({
-							capabilities = capabilities,
-						})
-					end,
-				},
 			})
 		end,
 	},

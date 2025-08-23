@@ -23,6 +23,7 @@ vim.o.smartcase = true
 -- ============================================================================
 -- INDENTATION AND FORMATTING
 -- ============================================================================
+vim.o.winborder = "rounded"
 vim.opt.wrap = false
 vim.opt.smartindent = true
 vim.o.breakindent = true
