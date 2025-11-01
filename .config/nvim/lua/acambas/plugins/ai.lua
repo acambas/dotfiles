@@ -15,28 +15,45 @@ return {
 	},
 	{
 		"NickvanDyke/opencode.nvim",
-		event = "VeryLazy",
-		lazy = true,
 		dependencies = {
-			"folke/snacks.nvim",
+			-- Recommended for `ask()` and `select()`.
+			-- Required for `toggle()`.
+			-- { "folke/snacks.nvim", opts = { input = {}, picker = {} } },
 		},
-		enabled = true,
-		opts = {},
-  -- stylua: ignore
-      keys = {
-        -- opencode.nvim exposes a general, flexible API — customize it to your workflow!
-        -- But here are some examples to get you started :)
-        { '<leader>ot', function() require('opencode').toggle() end, desc = 'Toggle opencode', },
-        { '<leader>oa', function() require('opencode').ask() end, desc = 'Ask opencode', mode = { 'n', 'v' }, },
-        { '<leader>oA', function() require('opencode').ask('@file ') end, desc = 'Ask opencode about current file', mode = { 'n', 'v' }, },
-        { '<leader>on', function() require('opencode').command('/new') end, desc = 'New session', },
-        { '<leader>oe', function() require('opencode').prompt('Explain @cursor and its context') end, desc = 'Explain code near cursor' },
-        { '<leader>or', function() require('opencode').prompt('Review @file for correctness and readability') end, desc = 'Review file', },
-        { '<leader>of', function() require('opencode').prompt('Fix these @diagnostics') end, desc = 'Fix errors', },
-        { '<leader>oo', function() require('opencode').prompt('Optimize @selection for performance and readability') end, desc = 'Optimize selection', mode = 'v', },
-        { '<leader>od', function() require('opencode').prompt('Add documentation comments for @selection') end, desc = 'Document selection', mode = 'v', },
-        -- { '<leader>ot', function() require('opencode').prompt('Add tests for @selection') end, desc = 'Test selection', mode = 'v', },
-      },
+		config = function()
+			vim.g.opencode_opts = {
+				-- Your configuration, if any — see `lua/opencode/config.lua`
+			}
+
+			-- Required for `vim.g.opencode_opts.auto_reload`
+			vim.opt.autoread = true
+
+			-- Recommended/example keymaps
+			vim.keymap.set({ "n", "x" }, "<leader>oa", function()
+				require("opencode").ask("@this: ", { submit = true })
+			end, { desc = "Ask about this" })
+			vim.keymap.set({ "n", "x" }, "<leader>o+", function()
+				require("opencode").prompt("@this")
+			end, { desc = "Add this" })
+			vim.keymap.set({ "n", "x" }, "<leader>os", function()
+				require("opencode").select()
+			end, { desc = "Select prompt" })
+			vim.keymap.set("n", "<leader>ot", function()
+				require("opencode").toggle()
+			end, { desc = "Toggle embedded" })
+			vim.keymap.set("n", "<leader>on", function()
+				require("opencode").command("session_new")
+			end, { desc = "New session" })
+			vim.keymap.set("n", "<leader>oi", function()
+				require("opencode").command("session_interrupt")
+			end, { desc = "Interrupt session" })
+			vim.keymap.set("n", "<S-C-u>", function()
+				require("opencode").command("messages_half_page_up")
+			end, { desc = "Messages half page up" })
+			vim.keymap.set("n", "<S-C-d>", function()
+				require("opencode").command("messages_half_page_down")
+			end, { desc = "Messages half page down" })
+		end,
 	},
 	{
 		"yetone/avante.nvim",
@@ -98,7 +115,7 @@ return {
 	{
 		"zbirenbaum/copilot.lua",
 		cmd = "Copilot",
-		enabled = true,
+		enabled = false,
 		event = "InsertEnter",
 		config = function()
 			require("copilot").setup({
@@ -118,65 +135,6 @@ return {
 					},
 				},
 			})
-		end,
-	},
-	{
-		"CopilotC-Nvim/CopilotChat.nvim",
-		enabled = false,
-		branch = "canary",
-		event = "VeryLazy",
-		dependencies = {
-			{ "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-			{ "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
-		},
-		config = function()
-			require("CopilotChat").setup({
-				debug = true, -- Enable debugging
-				-- See Configuration section for rest
-				mappings = {
-					complete = {
-						detail = "Use @<Tab> or /<Tab> for options.",
-						insert = "<Tab>",
-					},
-					close = {
-						normal = "q",
-						insert = "<C-c>",
-					},
-					reset = {
-						normal = "<C-r>",
-						insert = "<C-r>",
-					},
-					submit_prompt = {
-						normal = "<CR>",
-						insert = "<C-m>",
-					},
-					accept_diff = {
-						normal = "<C-y>",
-						insert = "<C-y>",
-					},
-					yank_diff = {
-						normal = "gy",
-					},
-					show_diff = {
-						normal = "gd",
-					},
-					show_system_prompt = {
-						normal = "gp",
-					},
-					show_user_selection = {
-						normal = "gs",
-					},
-				},
-			})
-			vim.keymap.set({ "n" }, "<leader>ccq", function()
-				local input = vim.fn.input("Quick Chat: ")
-				if input ~= "" then
-					require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
-				end
-			end)
-			vim.keymap.set({ "v" }, "<leader>ccq", function()
-				require("CopilotChat").ask("explain how it works", { selection = require("CopilotChat.select").visual })
-			end) -- save file
 		end,
 	},
 }
