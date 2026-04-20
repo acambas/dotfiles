@@ -3,37 +3,37 @@ return {
 	priority = 1000,
 	lazy = false,
 	keys = {
-		-- {
-		-- 	"<leader><space>",
-		-- 	function()
-		-- 		require("snacks").picker.smart({
-		-- 			layout = {
-		-- 				-- preset = "ivy",
-		-- 				-- preset = "vscode",
-		-- 				-- preset = "dafault",
-		-- 				-- preset = "dropdown",
-		-- 				preset = "vertical",
-		-- 			},
-		-- 			filter = { cwd = true },
-		-- 		})
-		-- 	end,
-		-- 	desc = "Smart Find Files",
-		-- },
-		-- {
-		-- 	"<leader>sg",
-		-- 	function()
-		-- 		require("snacks").picker.grep({
-		-- 			-- finder = "grep",
-		-- 			regex = false,
-		-- 			-- format = "file",
-		-- 			-- show_empty = true,
-		-- 			-- live = true, -- live grep by default
-		-- 			-- supports_live = true,
-		-- 			filter = { cwd = true },
-		-- 		})
-		-- 	end,
-		-- 	desc = "Grep",
-		-- },
+		{
+			"<leader><space>",
+			function()
+				require("snacks").picker.smart({
+					layout = {
+						-- preset = "ivy",
+						-- preset = "vscode",
+						-- preset = "dafault",
+						-- preset = "dropdown",
+						preset = "vertical",
+					},
+					filter = { cwd = true },
+				})
+			end,
+			desc = "Smart Find Files",
+		},
+		{
+			"<leader>/",
+			function()
+				require("snacks").picker.grep({
+					-- finder = "grep",
+					regex = false,
+					-- format = "file",
+					-- show_empty = true,
+					-- live = true, -- live grep by default
+					-- supports_live = true,
+					filter = { cwd = true },
+				})
+			end,
+			desc = "Grep",
+		},
 		-- {
 		-- 	"<leader>sg",
 		-- 	function()
@@ -42,13 +42,13 @@ return {
 		-- 	desc = "Visual selection or word",
 		-- 	mode = { "v" },
 		-- },
-		-- {
-		-- 	"<leader>sb",
-		-- 	function()
-		-- 		require("snacks").picker.buffers()
-		-- 	end,
-		-- 	desc = "Buffers",
-		-- },
+		{
+			"<leader>sb",
+			function()
+				require("snacks").picker.buffers()
+			end,
+			desc = "Buffers",
+		},
 		-- {
 		-- 	"<leader>sn",
 		-- 	function()
@@ -71,13 +71,13 @@ return {
 		-- 	desc = "Quickfix List",
 		-- },
 		-- lsp picker
-		-- {
-		-- 	"<leader>sd",
-		-- 	function()
-		-- 		require("snacks").picker.diagnostics()
-		-- 	end,
-		-- 	desc = "Diagnostics",
-		-- },
+		{
+			"<leader>sd",
+			function()
+				require("snacks").picker.diagnostics()
+			end,
+			desc = "Diagnostics",
+		},
 		-- {
 		-- 	"gd",
 		-- 	function()
@@ -138,18 +138,18 @@ return {
 				},
 			},
 			picker = {
-				enabled = false,
+				enabled = true,
 				main = {
 					file = false,
 				},
-				win = {
-					input = {
-						keys = {
-							["<c-q>"] = { "close", mode = { "i" } },
-							["<leader>q"] = { "qflist", mode = { "n" } },
-						},
-					},
-				},
+				-- win = {
+				-- 	input = {
+				-- 		keys = {
+				-- 			["<c-q>"] = { "close", mode = { "i" } },
+				-- 			["<leader>q"] = { "qflist", mode = { "n" } },
+				-- 		},
+				-- 	},
+				-- },
 			},
 		})
 		vim.keymap.set("n", "<leader>gf", function()

@@ -105,7 +105,7 @@ return {
 		},
 		config = function()
 			vim.keymap.set("n", "gh", vim.lsp.buf.hover, { desc = "go to hover" })
-			vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "go to hover" })
+			vim.keymap.set("n", "gdd", vim.lsp.buf.definition, { desc = "go to hover" })
 			vim.opt.signcolumn = "yes"
 			vim.diagnostic.config({
 				virtual_text = false,

@@ -64,6 +64,7 @@ vim.o.clipboard = "unnamedplus"
 -- COLORSCHEME
 -- ============================================================================
 vim.cmd("colorscheme rose-pine-moon")
+-- require("vim._core.ui2").enable({})
 
 -- ============================================================================
 -- AUTOCOMMANDS
@@ -113,3 +114,7 @@ vim.api.nvim_create_user_command("PathCopyAbs", function()
 	print("Path: " .. path)
 	vim.fn.setreg("+", path)
 end, {})
+
+vim.api.nvim_create_autocmd("VimResized", {
+	command = "wincim =",
+})

@@ -68,9 +68,9 @@ alias tss="~/tmux-sessionizer.sh"
 # alias zig="~/dev/zig/zig"
 
 
-if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-    tmux attach -t home || tmux new -s home -c $HOME
-fi
+# if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+#     tmux attach -t home || tmux new -s home -c $HOME
+# fi
 
 # bun completions
 [ -s "/Users/aleksandarcambas/.bun/_bun" ] && source "/Users/aleksandarcambas/.bun/_bun"
@@ -89,3 +89,4 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # ---- Zoxide (better cd) ----
 eval "$(zoxide init zsh)"
+eval "$(tv init zsh)"

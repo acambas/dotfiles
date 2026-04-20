@@ -23,6 +23,7 @@ config.keys = {
 	{ mods = "CMD", key = "j", action = wezterm.action.SendKey({ key = "DownArrow" }) },
 	{ mods = "CMD", key = "k", action = wezterm.action.SendKey({ key = "UpArrow" }) },
 	{ mods = "CMD", key = "l", action = wezterm.action.SendKey({ key = "RightArrow" }) },
+	{ mods = "SHIFT", key = "Enter", action = wezterm.action.SendString("\x1b[13;2u") },
 }
 config.font = wezterm.font("JetBrainsMono Nerd Font Mono")
 config.font_size = 13
