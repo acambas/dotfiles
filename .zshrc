@@ -32,6 +32,7 @@ alias reload="source ~/.zshrc"
 alias c="clear"
 alias hg="history 0 | grep"
 alias lg="lazygit"
+alias weather="curl wttr.in/Berlin"
 
 # Config
 alias config.zsh="vim ~/.zshrc"
