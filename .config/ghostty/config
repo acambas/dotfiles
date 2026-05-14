@@ -1,0 +1,24 @@
+theme = Rose Pine Moon
+
+font-family = "JetBrainsMono Nerd Font Mono"
+font-size = 13
+font-feature = -calt
+font-feature = -clig
+font-feature = -liga
+
+background-opacity = 0.92
+window-decoration = false
+window-padding-x = 15
+window-padding-y = 5
+
+macos-option-as-alt = true
+
+keybind = super+right=text:\x05
+keybind = super+backspace=text:\x15
+keybind = alt+left=text:\x1bb
+keybind = alt+right=text:\x1bf
+keybind = super+h=text:\x1b[D
+keybind = super+j=text:\x1b[B
+keybind = super+k=text:\x1b[A
+keybind = super+l=text:\x1b[C
+keybind = shift+enter=text:\x1b[13;2u
