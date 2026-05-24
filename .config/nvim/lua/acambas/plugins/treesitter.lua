@@ -3,6 +3,7 @@ return {
 		--        Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		branch = "main",
+		enabled = false,
 		dependencies = {
 			{
 				"windwp/nvim-ts-autotag",
